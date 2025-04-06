@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CatSwap</title>
+  <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-purple-950 text-white flex flex-col items-center justify-center min-h-screen p-4">
+  <h1 class="text-4xl font-bold mb-2">🐱 CatSwap</h1>
+  <p class="mb-6 text-purple-300">Swap WAGMI Cat (WC) and Sonic</p>
+  <div id="app" class="w-full max-w-md bg-purple-800 p-6 rounded-2xl shadow-xl">
+    <button id="connect" class="bg-purple-700 hover:bg-purple-600 px-4 py-2 rounded mb-4">Connect Wallet</button>
+    <div id="accountInfo" class="text-sm mb-2"></div>
+    <div id="balances" class="text-xs text-purple-300 mb-4"></div>
+
+    <!-- Swap box -->
+    <div>
+      <label class="block text-sm mb-1">From:</label>
+      <div class="flex items-center space-x-2 mb-2">
+        <img src="./0xDD175A3998D81C3Ef51aBB9c1Eab2D7a8C795F68.png" class="w-8 h-8 rounded-full" id="fromIcon">
+        <span id="fromLabel">WC</span>
+        <input type="number" id="fromAmount" class="bg-purple-900 border border-purple-700 text-right px-2 py-1 rounded w-full" />
+      </div>
+
+      <label class="block text-sm mb-1">To:</label>
+      <div class="flex items-center space-x-2 mb-4">
+        <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center text-black font-bold">S</div>
+        <span id="toLabel">Sonic</span>
+        <input type="number" id="toAmount" readonly class="bg-purple-900 border border-purple-700 text-right px-2 py-1 rounded w-full" />
+      </div>
+
+      <button id="switchBtn" class="bg-purple-600 hover:bg-purple-500 text-sm px-4 py-2 rounded mb-4">🔁 Switch Direction</button>
+      <button id="swapBtn" class="w-full bg-pink-600 hover:bg-pink-500 px-4 py-2 rounded">Swap</button>
+    </div>
+
+    <!-- Add Liquidity -->
+    <div class="mt-8 border-t border-purple-600 pt-4">
+      <h2 class="font-semibold mb-2">Add Liquidity</h2>
+      <input id="addWc" placeholder="WC Amount" type="number" class="bg-purple-900 border border-purple-700 px-2 py-1 rounded w-full mb-2" />
+      <input id="addSonic" placeholder="Sonic Amount" type="number" class="bg-purple-900 border border-purple-700 px-2 py-1 rounded w-full mb-2" />
+      <button id="addBtn" class="bg-blue-600 hover:bg-blue-500 px-4 py-2 rounded w-full">Add Liquidity</button>
+    </div>
+
+    <!-- Remove Liquidity -->
+    <div class="mt-6 border-t border-purple-600 pt-4">
+      <h2 class="font-semibold mb-2">Remove Liquidity</h2>
+      <input id="removeLp" placeholder="LP Amount to Remove" type="number" class="bg-purple-900 border border-purple-700 px-2 py-1 rounded w-full mb-2" />
+      <button id="removeBtn" class="bg-red-600 hover:bg-red-500 px-4 py-2 rounded w-full">Remove Liquidity</button>
+    </div>
+  </div>
+
+  <script src="catswap.js"></script>
+</body>
+</html>
